@@ -9,10 +9,12 @@ export class Task {
   @Column()
   title: string;
 
-  @Column()
-  description: string
+  @Column({default:''})
+  description?: string
 
-  @ManyToOne(()=> User, user => user.tasks)
+  @Column({default: false})
+  isCompleted: boolean;
 
+  @ManyToOne(()=> User, (user) => user.tasks)
   user: User
 }
