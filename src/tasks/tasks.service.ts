@@ -26,14 +26,18 @@ export class TasksService {
   }
 
   findOne(id: number) {
-    return this.taskRepository.findOneBy({id});
+    return this.taskRepository.findOne({where: {id}, relations: ["user"]});
   }
 
   update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+    const {userId, ...taskData} = updateTaskDto;
+    // const task = this.taskRepository.create({
+    //   ...taskData
+    // });
+    return this.taskRepository.update(id, taskData);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} task`;
+    return this.taskRepository.delete({id});
   }
 }

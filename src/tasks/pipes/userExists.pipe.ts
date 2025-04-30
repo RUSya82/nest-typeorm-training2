@@ -1,14 +1,14 @@
 import { PipeTransform, Injectable, NotFoundException } from '@nestjs/common';
-import { User } from "../../users/entities/user.entity";
 import { UsersService } from "../../users/users.service";
-import { CreateTaskDto } from "../dto/create-task.dto";
+import { UpdateTaskDto } from "../dto/update-task.dto";
 
 @Injectable()
 export class UserExistsPipe implements PipeTransform<any> {
   constructor(private readonly usersService: UsersService) {}
 
-  async transform(body: CreateTaskDto): Promise<CreateTaskDto> {
+  async transform(body: UpdateTaskDto): Promise<UpdateTaskDto> {
     const userId = body.userId;
+    //
     if(!userId){
       return body;
     }

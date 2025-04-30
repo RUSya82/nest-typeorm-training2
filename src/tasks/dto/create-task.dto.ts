@@ -3,9 +3,6 @@ import { Allow, IsNumber, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
 
 export class CreateTaskDto {
-  @IsNumber()
-  id: number;
-
   @IsString()
   title: string;
 
